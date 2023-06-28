@@ -2,3 +2,66 @@
   margin: 0;
   padding: 0;
 }
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+/* HEADER */
+#header {
+  flex: 0.5;
+  background: red;
+  display: flex;
+  justify-content: space-between;
+}
+
+#header-left-div {
+  display: flex;
+  align-items: center;
+}
+
+#header-right-div {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 250px;
+  justify-content: center;
+}
+
+.header-ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.header-li {
+  list-style: none;
+}
+
+/* MAIN */
+
+.main-img-div {
+  background-color: yellow;
+  flex: 3;
+  overflow: hidden;
+}
+
+.main-img {
+  /* display: none; */
+  height: 100%;
+  width: 100%;
+}
+
+/* .container > #header {
+  flex: 1;
+}
+
+.container > .main-img-div {
+  flex: 3;
+} */
