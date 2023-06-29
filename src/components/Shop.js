@@ -3,6 +3,7 @@ import categories from "../data/categories";
 import Sidebar from "./Sidebar";
 import { render } from "@testing-library/react";
 import { useParams } from "react-router-dom";
+import ShopCard from "./ShopCard";
 
 const Shop = () => {
   const { category } = useParams();
@@ -10,26 +11,31 @@ const Shop = () => {
     (el) => el[0].category === category
   );
   const renderContent = () => {
+    // Render all shop items
     if (!filteredCategories) {
       return categories.map((el) =>
         Object.keys(el).map((key) => (
-          <div className="shop-card">
-            <img src={el[key].images[0]} alt={el[key].id} />
-            <span className="shop-card-span">{el[key].name}</span>
-          </div>
+          <ShopCard
+            props={{
+              images: el[key].images,
+              name: el[key].name,
+              id: el[key].id,
+            }}
+          />
         ))
       );
     }
 
+    // Render category that's clicked in the sidebar
     if (filteredCategories) {
       return Object.keys(filteredCategories).map((key) => (
-        <div className="shop-card">
-          <img
-            src={filteredCategories[key].images[0]}
-            alt={filteredCategories[key].id}
-          />
-          <span className="shop-card-span">{filteredCategories[key].name}</span>
-        </div>
+        <ShopCard
+          props={{
+            images: filteredCategories[key].images,
+            name: filteredCategories[key].name,
+            id: filteredCategories[key].id,
+          }}
+        />
       ));
     }
   };
