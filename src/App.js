@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import Main from "./components/Main";
+import Header from "./components/Header";
+import Shop from "./components/Shop";
+import "./App.css";
+import { useSearchParams } from "react-router-dom";
 
-function App() {
+const App = () => {
+  // const [searchParams, setSearchParams] = useSearchParams({ category: "" });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:category" element={<Shop />} />
+        </Routes>
+      </>
     </div>
   );
-}
+};
 
 export default App;
