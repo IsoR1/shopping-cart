@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import CartItem from "./CartItem";
+import { render } from "@testing-library/react";
 
-const Cart = ({ cartItems, cartItemCount }) => {
-  console.log(cartItems);
+const Cart = ({ cartItems, cartItemCount, removeItemFromCart }) => {
+  const renderContent = () => {
+    return cartItems.map((item) => (
+      <CartItem
+        key={item.id}
+        item={item}
+        name={item.name}
+        price={item.price}
+        image={item.images[0]}
+        count={item.quantity}
+        removeItemFromCart={removeItemFromCart}
+      />
+    ));
+  };
 
-  return <div className="cart-container">{cartItemCount}</div>;
+  useEffect(() => {
+    renderContent();
+  }, [cartItems]);
+
+  return (
+    // <div className="cart-container">
+    <div className="cart-items">{renderContent()}</div>
+  );
 };
 
 export default Cart;

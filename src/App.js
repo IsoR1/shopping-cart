@@ -12,13 +12,41 @@ const App = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
 
   const addItemToCart = (item) => {
-    setCartItems([...cartItems, item]);
+    const itemIndex = cartItems.findIndex((el) => el.id === item.id);
+    if (itemIndex !== -1) {
+      const updatedList = [...cartItems];
+      updatedList[itemIndex].quantity += 1;
+      setCartItems(updatedList);
+    } else {
+      setCartItems([...cartItems, item]);
+    }
+    console.log(cartItems);
     setCartItemCount(cartItemCount + 1);
+  };
+
+  const removeItemFromCart = (item) => {
+    const itemIndex = cartItems.findIndex((el) => el.id === item.id);
+    if (itemIndex !== -1) {
+      const updatedList = [...cartItems];
+      if (updatedList[itemIndex].quantity > 1) {
+        updatedList[itemIndex].quantity -= 1;
+        setCartItems(updatedList);
+      } else {
+        updatedList.splice(itemIndex, 1);
+        setCartItems(updatedList);
+        // cartItems.slice(itemIndex, 1);
+      }
+    }
+    console.log(cartItems);
   };
 
   return (
     <div className="container">
-      <Header cartItemCount={cartItemCount} />
+      <Header
+        cartItemCount={cartItemCount}
+        addItemToCart={addItemToCart}
+        removeItemFromCart={removeItemFromCart}
+      />
       <>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -34,7 +62,11 @@ const App = () => {
           <Route
             path="/cart"
             element={
-              <Cart cartItems={cartItems} cartItemCount={cartItemCount} />
+              <Cart
+                cartItems={cartItems}
+                cartItemCount={cartItemCount}
+                removeItemFromCart={removeItemFromCart}
+              />
             }
           />
         </Routes>
