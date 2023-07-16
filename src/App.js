@@ -34,9 +34,9 @@ const App = () => {
       } else {
         updatedList.splice(itemIndex, 1);
         setCartItems(updatedList);
-        // cartItems.slice(itemIndex, 1);
       }
     }
+    setCartItemCount(cartItemCount - 1);
     console.log(cartItems);
   };
 
@@ -66,6 +66,7 @@ const App = () => {
                 cartItems={cartItems}
                 cartItemCount={cartItemCount}
                 removeItemFromCart={removeItemFromCart}
+                addItemToCart={addItemToCart}
               />
             }
           />

@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import { render } from "@testing-library/react";
 
-const Cart = ({ cartItems, cartItemCount, removeItemFromCart }) => {
+const Cart = ({
+  cartItems,
+  cartItemCount,
+  removeItemFromCart,
+  addItemToCart,
+}) => {
   const renderContent = () => {
     return cartItems.map((item) => (
       <CartItem
@@ -13,6 +18,7 @@ const Cart = ({ cartItems, cartItemCount, removeItemFromCart }) => {
         image={item.images[0]}
         count={item.quantity}
         removeItemFromCart={removeItemFromCart}
+        addItemToCart={addItemToCart}
       />
     ));
   };
