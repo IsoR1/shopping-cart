@@ -14,7 +14,7 @@ const CartItem = ({
     <div className="cart-card">
       <img src={image} className="cart-image" />
       <div className="cart-card-span-info">
-        <span>{name}</span>
+        <span id="cart-item-name">{name}</span>
         <span>${price}</span>
         <span>
           {

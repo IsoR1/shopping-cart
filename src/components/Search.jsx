@@ -6,13 +6,6 @@ const Search = () => {
   const [searchClicked, setSearchClicked] = useState(false);
   const toggleClass = () => {
     !searchClicked ? setSearchClicked(true) : setSearchClicked(false);
-    // if (!searchClicked) {
-    //   setSearchClicked(true);
-    // }
-    // if (searchClicked) {
-    //   setSearchClicked(false);
-    // }
-    console.log(searchClicked);
   };
 
   return (

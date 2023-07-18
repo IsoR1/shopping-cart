@@ -8,9 +8,13 @@ const CartCountControl = ({
 }) => {
   return (
     <div className="cart-count-control-div">
-      <span onClick={() => removeItemFromCart(item)}>-</span>
+      <button type="button" onClick={() => removeItemFromCart(item)}>
+        -
+      </button>
       <span>{count}</span>
-      <span onClick={() => addItemToCart(item)}>+</span>
+      <button type="button" onClick={() => addItemToCart(item)}>
+        +
+      </button>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ cartItemCount, addItemToCart, removeItemFromCart }) => {
   return (
     <>
       <nav>
@@ -14,7 +14,13 @@ const Navbar = () => {
             <Link to="/shop">Shop</Link>
           </li>
           <li className="header-li">
-            <Link to="/cart">Cart</Link>
+            <Link
+              to="/cart"
+              addItemToCart={addItemToCart}
+              removeItemFromCart={removeItemFromCart}
+            >
+              Cart <span>{cartItemCount}</span>
+            </Link>
           </li>
         </ul>
       </nav>

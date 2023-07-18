@@ -20,6 +20,8 @@ const Shop = () => {
               images: el[key].images,
               name: el[key].name,
               id: el[key].id,
+              price: el[key].price,
+              category: el[key].category,
             }}
           />
         ))
@@ -34,6 +36,8 @@ const Shop = () => {
             images: filteredCategories[key].images,
             name: filteredCategories[key].name,
             id: filteredCategories[key].id,
+            price: filteredCategories[key].price,
+            category: filteredCategories[key].category,
           }}
         />
       ));
@@ -42,7 +46,9 @@ const Shop = () => {
   return (
     <div className="shop-container">
       <Sidebar />
-      <div id="shop-div">{renderContent()}</div>
+      <div id="shop-div" data-testid="shop-div">
+        {renderContent()}
+      </div>
     </div>
   );
 };
