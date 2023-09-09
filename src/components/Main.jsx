@@ -1,5 +1,5 @@
 import React from "react";
-import heatArena from "../images/heat-arena.jpg";
+import heatArena from "/images/heat-arena.jpg";
 
 const Main = () => {
   return (

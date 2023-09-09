@@ -250,3 +250,12 @@ a:visited {
   flex-direction: column;
   align-self: center;
 }
+
+.cart-count-control-div {
+  display: flex;
+  gap: 4px;
+}
+
+#cart-item-name {
+  font-weight: 700;
+}

@@ -1,7 +1,13 @@
 import React from "react";
 import Navbar from "./Navbar";
 
-const Header = ({ cartItemCount, addItemToCart, removeItemFromCart }) => {
+const Header = ({
+  cartItemCount,
+  addItemToCart,
+  removeItemFromCart,
+  searchInput,
+  setSearchInput,
+}) => {
   return (
     <div id="header">
       <div id="header-left-div">
@@ -13,6 +19,8 @@ const Header = ({ cartItemCount, addItemToCart, removeItemFromCart }) => {
           cartItemCount={cartItemCount}
           addItemToCart={addItemToCart}
           removeItemFromCart={removeItemFromCart}
+          setSearchInput={setSearchInput}
+          searchInput={searchInput}
         />
       </div>
     </div>

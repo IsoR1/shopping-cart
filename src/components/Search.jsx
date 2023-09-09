@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Search = () => {
+const Search = ({ searchInput, setSearchInput }) => {
   const [searchClicked, setSearchClicked] = useState(false);
   const toggleClass = () => {
     !searchClicked ? setSearchClicked(true) : setSearchClicked(false);
+  };
+
+  const handleInput = (e) => {
+    setSearchInput(e.target.value);
   };
 
   return (
@@ -15,6 +19,7 @@ const Search = () => {
           type="text"
           placeholder="Search"
           className={`${searchClicked ? "active" : ""}`}
+          onChange={(e) => handleInput(e)}
         />
         <div className={`icon ${searchClicked ? "active" : ""}`}>
           <FontAwesomeIcon

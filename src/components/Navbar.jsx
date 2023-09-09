@@ -2,16 +2,29 @@ import React from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ cartItemCount, addItemToCart, removeItemFromCart }) => {
+const Navbar = ({
+  cartItemCount,
+  addItemToCart,
+  removeItemFromCart,
+  searchInput,
+  setSearchInput,
+}) => {
   return (
     <>
       <nav>
         <ul className="header-ul">
-          <li className="header-li">{<Search />}</li>
           <li className="header-li">
-            {/* <Link>Search</Link> */}
-            {/* Search */}
-            <Link to="/shop">Shop</Link>
+            {
+              <Search
+                setSearchInput={setSearchInput}
+                searchInput={searchInput}
+              />
+            }
+          </li>
+          <li className="header-li">
+            <Link to="/shop" data-testid="shop-link">
+              Shop
+            </Link>
           </li>
           <li className="header-li">
             <Link
