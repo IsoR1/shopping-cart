@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 
 const Header = ({
   cartItemCount,
   addItemToCart,
   removeItemFromCart,
-  searchInput,
-  setSearchInput,
+  searchQuery,
+  setSearchQuery,
 }) => {
   return (
     <div id="header">
@@ -19,8 +19,8 @@ const Header = ({
           cartItemCount={cartItemCount}
           addItemToCart={addItemToCart}
           removeItemFromCart={removeItemFromCart}
-          setSearchInput={setSearchInput}
-          searchInput={searchInput}
+          setSearchQuery={setSearchQuery}
+          searchQuery={searchQuery}
         />
       </div>
     </div>

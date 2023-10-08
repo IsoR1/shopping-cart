@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
@@ -6,8 +6,8 @@ const Navbar = ({
   cartItemCount,
   addItemToCart,
   removeItemFromCart,
-  searchInput,
-  setSearchInput,
+  searchQuery,
+  setSearchQuery,
 }) => {
   return (
     <>
@@ -16,8 +16,8 @@ const Navbar = ({
           <li className="header-li">
             {
               <Search
-                setSearchInput={setSearchInput}
-                searchInput={searchInput}
+                setSearchQuery={setSearchQuery}
+                searchQuery={searchQuery}
               />
             }
           </li>
