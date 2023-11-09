@@ -31,6 +31,7 @@ exports[`Navbar > renders the navbar 1`] = `
                     class="svg-inline--fa fa-magnifying-glass i-fa"
                     data-icon="magnifying-glass"
                     data-prefix="fas"
+                    data-testid="search-icon"
                     focusable="false"
                     role="img"
                     viewBox="0 0 512 512"
@@ -49,6 +50,7 @@ exports[`Navbar > renders the navbar 1`] = `
             class="header-li"
           >
             <a
+              data-testid="shop-link"
               href="/shop"
             >
               Shop
@@ -61,7 +63,6 @@ exports[`Navbar > renders the navbar 1`] = `
               href="/cart"
             >
               Cart 
-              <span />
             </a>
           </li>
         </ul>
@@ -95,6 +96,7 @@ exports[`Navbar > renders the navbar 1`] = `
                   class="svg-inline--fa fa-magnifying-glass i-fa"
                   data-icon="magnifying-glass"
                   data-prefix="fas"
+                  data-testid="search-icon"
                   focusable="false"
                   role="img"
                   viewBox="0 0 512 512"
@@ -113,6 +115,7 @@ exports[`Navbar > renders the navbar 1`] = `
           class="header-li"
         >
           <a
+            data-testid="shop-link"
             href="/shop"
           >
             Shop
@@ -125,7 +128,6 @@ exports[`Navbar > renders the navbar 1`] = `
             href="/cart"
           >
             Cart 
-            <span />
           </a>
         </li>
       </ul>

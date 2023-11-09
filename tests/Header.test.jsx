@@ -13,23 +13,6 @@ describe("Header", () => {
         <Header />
       </Router>
     );
-    expect(screen.getByRole("heading").textContent).toMatch(/Mock Heat Store/i);
+    expect(screen.getByRole("heading").textContent).toMatch(/Mock Store/i);
   });
-  // it("renders the navigation links", () => {
-  //   render(
-  //     <Router>
-  //       <Header />
-  //     </Router>
-  //   );
-
-  //   const ulElement = screen.getByRole("list");
-  //   const listItems = screen.getAllByRole("listitem");
-
-  //   expect(ulElement).toBeInTheDocument();
-  //   expect(listItems).toHaveLength(3);
-
-  //   expect(listItems[0]).toHaveTextContent("Shop");
-  //   expect(listItems[1]).toHaveTextContent("Search");
-  //   expect(listItems[2]).toHaveTextContent("Cart");
-  // });
 });

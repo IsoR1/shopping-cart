@@ -6,7 +6,6 @@ import Navbar from "../src/components/Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import Shop from "../src/components/Shop";
-import { createMemoryHistory } from "history";
 
 describe("Navbar", () => {
   it("renders the navbar", () => {
@@ -20,19 +19,25 @@ describe("Navbar", () => {
   });
 
   it("redirects to shop", async () => {
-    const history = createMemoryHistory();
     render(
-      <Router history={history}>
+      <Router>
         <Navbar />
       </Router>
     );
 
-    // const user = userEvent.setup();
-    // const shopLink = screen.getByText("Shop");
     const shopLink = screen.getByRole("link", { name: "Shop" });
-    // const shopLink = screen.getByTestId("shop-link");
-    userEvent.click(shopLink);
-    // await user.click(shopLink);
-    expect(await screen.getByTestId("shop-con")).toBeInTheDocument();
+    await userEvent.click(shopLink);
+    expect(window.location.pathname).toBe("/shop");
+  });
+  it("redirects to cart", async () => {
+    render(
+      <Router>
+        <Navbar />
+      </Router>
+    );
+
+    const cartLink = screen.getByRole("link", { name: "Cart" });
+    await userEvent.click(cartLink);
+    expect(window.location.pathname).toBe("/cart");
   });
 });
