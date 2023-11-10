@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { SearchContext } from "../contexts/SearchContext";
 
-const Search = ({ setSearchQuery, searchQuery }) => {
+const Search = () => {
   const [searchClicked, setSearchClicked] = useState(false);
+
+  const { handleSearchInput } = useContext(SearchContext);
+
   const toggleClass = () => {
     !searchClicked ? setSearchClicked(true) : setSearchClicked(false);
   };
-
-  const handleInput = (e) => {
-    setSearchQuery(e.target.value);
-    console.log("this is the search query:", searchQuery);
-    // console.log("this is the search query:", e.target.value);
-  };
-
   return (
     <div className="search-wrapper">
       <div className="search-box">
@@ -21,10 +18,11 @@ const Search = ({ setSearchQuery, searchQuery }) => {
           type="text"
           placeholder="Search"
           className={`${searchClicked ? "active" : ""}`}
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => handleSearchInput(e)}
         />
         <div className={`icon ${searchClicked ? "active" : ""}`}>
           <FontAwesomeIcon
+            data-testid={"search-icon"}
             icon={faSearch}
             className="i-fa"
             onClick={toggleClass}

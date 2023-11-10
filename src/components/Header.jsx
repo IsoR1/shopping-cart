@@ -11,7 +11,7 @@ const Header = ({
   return (
     <div id="header">
       <div id="header-left-div">
-        <h1 className="header-left-h1">Mock Heat Store</h1>
+        <h1 className="header-left-h1">Mock Store</h1>
       </div>
 
       <div id="header-right-div">

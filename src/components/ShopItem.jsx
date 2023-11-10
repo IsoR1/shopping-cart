@@ -1,36 +1,29 @@
 import React, { useEffect, useState } from "react";
-import categories from "../data/categories";
 import { useParams } from "react-router-dom";
+// import CartContext from "./CartContext";
+import { CartContext } from "../contexts/CartContext";
+import { useContext } from "react";
+// import { CartContextProvider, cartContext } from "../contexts/CartContext";
 
-const ShopItem = ({ addItemToCart }) => {
+const ShopItem = () => {
   const { category, id } = useParams();
-  // let item;
-  // categories.map((el) => {
-  //   Object.keys(el).map((key) => {
-  //     if (el[key].id === id) {
-  //       item = el[key];
-  //     }
-  //   });
-  // });
+  const { addToCart, cartItems } = useContext(CartContext);
   const [data, setData] = useState([]);
 
   fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json());
-  // .then((json) => console.log(json));
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-        const jsonData = await response.json();
-        setData(jsonData);
-      } catch (error) {
-        console.log("Error: ", error);
-      }
-    };
-
     fetchData();
-  }, [id]);
-
+  }, []);
   return (
     <div className="product-container">
       <div className="product">
@@ -47,7 +40,9 @@ const ShopItem = ({ addItemToCart }) => {
             <span className="product-details-span details-price">
               $ {data.price}
             </span>
-            <button onClick={() => addItemToCart(data)}>Add to cart</button>
+            <button className="add-to-cart-btn" onClick={() => addToCart(data)}>
+              ADD TO CART
+            </button>
           </div>
         </div>
       </div>

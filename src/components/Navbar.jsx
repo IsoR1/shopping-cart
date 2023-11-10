@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
+import ShopItem from "./ShopItem";
 
-const Navbar = ({
-  cartItemCount,
-  addItemToCart,
-  removeItemFromCart,
-  searchQuery,
-  setSearchQuery,
-}) => {
+const Navbar = ({ searchQuery, setSearchQuery }) => {
+  const { cartItems } = useContext(CartContext);
+
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   return (
     <>
       <nav>
@@ -27,12 +30,8 @@ const Navbar = ({
             </Link>
           </li>
           <li className="header-li">
-            <Link
-              to="/cart"
-              addItemToCart={addItemToCart}
-              removeItemFromCart={removeItemFromCart}
-            >
-              Cart <span>{cartItemCount}</span>
+            <Link to="/cart">
+              Cart {totalQuantity > 0 && <span>{totalQuantity}</span>}
             </Link>
           </li>
         </ul>
